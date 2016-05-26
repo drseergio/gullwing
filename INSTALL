@@ -1,0 +1,38 @@
+# install infrastructure
+emerge python
+USE="bash-completion cairo doc icu java jpeg lapack minimal nls openmp perl png profile readline static-libs tiff tk X" emerge --newuse --update --autounmask-write =dev-lang/R-2.14.2
+etc-update
+USE="bash-completion cairo doc icu java jpeg lapack minimal nls openmp perl png profile readline static-libs tiff tk X" emerge --newuse --update  --jobs 12 =dev-lang/R-2.14.2
+emerge mysql
+# setup mysql admin
+/usr/bin/mysqladmin -u root password '<PASSWORD>'
+/usr/bin/mysqladmin -u root -p -h <hostname> password '<PASSWORD>'
+<PASSWORD>
+
+# setup gullwing DB infrastructure
+mysql -u root -p
+<PASSWORD>
+=========SQL Session============
+create database gullwing;
+create database glquotes;
+grant usage on *.* to gullwing@localhost identified by 'test';
+grant all priveleges on gullwing.* to gullwing;
+grant all priveleges on glquotes.* to gullwing;
+quit;
+================================
+cat misc/gullwing.sql | mysql -u root -p
+<PASSWORD>
+
+# install python packages
+easey_install simplejson
+emerge mysql-python
+
+# install R packages (via starting R and then executing the install.packages
+R
+install.packages("TTR")
+install.packages("quantmod")
+install.packages("RMySQL")
+install.packages("lattice")
+install.packages("yaml")
+install.packages("blotter", repos="http://R-Forge.R-project.org")
+install.packages("quantstrat", repos="http://R-Forge.R-project.org")

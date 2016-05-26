@@ -1,0 +1,60 @@
+Question:
+===============
+How do we identify good investment?
+
+Definition (good investment:) 
+===============
+Highest returns projected on annual return rate.
+
+Necessary code:
+===============
+- calculate annualized interest on a given investment 
+  double getAnnualizedInterest(Investment, Return, numberOfDays)
+        return   (Return/Investment - 1) * (360/numberOfDays)
+
+Possible Approach:
+==================
+1) calc annualized interest rate (AIR) for each potential investment
+2) take as input the [DISCUSSION: is the list below good/complete?]
+    * % of price drop
+    * % of volume spike
+    * absolute and mean price of the stock
+    * standard deviation of the stock
+    * market cap of the stock
+    * [MAYBE: Risk Measures?]
+       - alpha, beta, sharpratio, semiVariance,...
+3) use regular machine learning techniques to predict AIR by the
+  above inputs.
+4) verify whether we can get > 50%
+  [preferably >80%]
+
+Alternative Approach:
+==================
+NOTE: the above can also be modified
+into a classification problem via
+sorting all investments by AIR
+descending and getting the top x as
+one class and the bottom y as 2nd
+class. Instead of exactly predicting
+the AIR, we could potentially train
+whether we can find the right classes
+(poor investment vs top investment)
+
+Watchpoint
+===========
+This only works as the markets behave
+similar to historic behavior. a crash
+(i.e. 2001 or 2007/8) might harm this
+short term as the 
+
+Resource
+============
+ http://www.buckinvestor.com/basics/define_risk.shtml
+ about risk CAPM and PMT intro
+ http://www.investopedia.com/terms/r/riskmeasures.asp
+ alpha, beta, sharpratio
+
+ something similar to our (student?)
+ project:
+ http://www.yats.com/doc/r-trading-projet-index-en.html
+					 

@@ -1,0 +1,32 @@
+INSTALL: how to get your gentoo system ready to run gullwing
+
+VERSION: contains the version number of gullwing; if pistons.R, engine.R, catalyst.R,
+         monte_carlo.R are modified then the number must be updated
+
+doc/: design docs, ideas, etc
+
+pistons.R: backbone of almost all applications, contains functions that do the actual work
+
+engine.R: the main program that calculates breakout points and buy opportunities;
+          this code is run in production and must be kept in sync with semurg
+
+engine.yaml: contains configuration of the search algorithm (parameters)
+
+exterior.R: generates charts for selected symbols in specified time-frames
+
+catalyst.R: runs a single simulation
+
+catalyst.yaml: contains configuration of the simulator
+
+monte_carlo.R: runs many simulations to find optimal parameters
+
+db.yaml: contains configuration to access the database in which results and data
+         are stored
+
+db.sql: SQL schema for MySQL database to get gullwing running
+
+quotes.py: fetches price data from Yahoo and stores in database; results are used
+           by R programs
+
+screener.py: screens stocks by market capitalization and other parameters using
+             Google Finance; results are stored in database and used by R programs

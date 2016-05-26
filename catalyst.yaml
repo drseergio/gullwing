@@ -1,0 +1,6 @@
+tradesize: 10000     # buy this much stock per trade
+capital: 100000      # trading capital
+profit: 1.45        # do not sell until we reach X% profit
+fees: 0.02           # transaction costs
+hold_mdays: 400      # maximum market days to hold a stock (used by fast sim)
+hold_cdays: 600      # maximum calendar days to hold a stock (used by norm sim)

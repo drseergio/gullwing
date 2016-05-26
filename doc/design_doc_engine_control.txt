@@ -1,0 +1,46 @@
+Motivation:
+===============
+Before we optimize the engine, we need to be sure that we can compare runs
+against each other. There are several ways of doing so. One easy one is to
+simply calculate the overall win rate of each run.
+Advantage:
+---------------  
+* the higher the win rate, the likelier it is a good optimization step
+
+Disadvantage 
+-------------------
+* this assumes unlimited money and time (i.e. if thousands of buy
+* opportunities are generated per day -- while in reality we will only follow
+* very few of them).
+
+Since in reality both are limited, this documented suggests that first an
+investment path with a limited amount of money (i.e. $100.000,00) and risk
+taking (i.e. 5%) is calculated for each engine run. The capital gain of this
+investment path is compared to the investment path of the next run of the
+engine (together with the win rate, since this gives an idea of the risk as
+well). 
+
+Since there are multiple moments with multiple choices (i.e. which opportunity
+to pick on a given day) the goal is to calculate the best possible path via
+spanning a flow graph and using Bellman-Ford-Algorithm (a variant of the
+Dijkstra Algorithm), which is able to deal with negative values as well. 
+Each node is a moment of choice (one investment just completed and we need to
+pick the next one). You can also view it as a day during the engine run
+period. Every potential investment on that day is an outgoing edge (we assume
+we don't leave money in the bank; the alternative would be to introduce for
+every day a 1 day investment with the 1 day interest rate of the saving
+account). 
+The target nodes of the edges depend on how long this investment would take
+(max hold time, earlier achievement of investment target, or -potentially-
+early trigger of exit signals such as a stoop-loss order). 
+Since the algorithms are designed to calculate the maximum flow (or in other
+words find a path with the highest minimum edge weight), BUT does not care on
+the length of the path, we need to factor in the number of days the money is
+bound to the investment. Else, the algorithm can easily prefer a short path
+(meaning few investments, all running to the max time). We prefer winning
+investments that return earlier. Thus the edge weight needs to be 
+  weight(edge)= Investment_return/Investment_duration_in_days
+
+  R supports this algorithm via the package RBGL
+  http://svitsrv25.epfl.ch/R-doc/library/RBGL/html/bellman.ford.sp.html
+

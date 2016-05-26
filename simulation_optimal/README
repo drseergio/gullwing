@@ -1,0 +1,8 @@
+The purpose of this simulation is to execute trades with
+constraints of a limited cash account. In other words, the
+simulation will only execute transactions if there is enough
+cash available to make the purchase.
+
+This simulation will not execute every possible trade.
+
+Simulation assumes that engine.R and a list of transactions is stored in the database (exhause.R) has been run.

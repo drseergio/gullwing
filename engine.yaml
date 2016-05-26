@@ -1,0 +1,17 @@
+short_sma: 5        # short SMA
+long_sma: 80        # long SMA
+volume_sma: 15      # volume SMA
+volume_mult: 4.0    # expect at least X fold increase in volume
+buy_after: 25       # only buy after X days since breakout occurred
+macd_mult: 1.08     # expect MACD to be X-fold higher than signal MACD
+close_mult: 1.04    # close price must be X-fold higher than lowest low
+search_days: 110    # maximum number of days to look for buy after drop
+atr_days: 30        # Average True Range days
+atr_shift: 30       # we will look at ATR X days ago
+atr_max: 0.3        # maximum volatility prior to breakout to tolerate (expressed in ATR)
+
+cores: 9            # number of CPU cores to use
+
+stocks_all: TRUE   # whether to use all screened stocks
+stocks_sample: 0   # whether to use random selection of N stocks from screened stocks
+stocks_list: ['ALU']

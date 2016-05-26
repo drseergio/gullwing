@@ -1,0 +1,6 @@
+db:
+  host: localhost
+  q_db: glquotes
+  s_db: gullwing
+  user: gullwing
+  pass: test

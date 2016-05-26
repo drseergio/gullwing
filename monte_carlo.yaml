@@ -1,0 +1,17 @@
+hold_days: 'c(120, 140)'                 # search space for holding days
+vol_mults: 'c(3.5, 4.0)'                 # search space for volume multipliers
+vol_smas: 'c(5, 15, 30)'                   # search space for volume SMA
+price_smas_s: 'c(5, 10, 20)'    # search space for price short SMA
+price_smas_l: 'c(40, 60, 80)' # search space for price long SMA
+search_days: 'c(110)'  # how many days to look for an entry since breakout
+after_days: 'c(5, 15, 25, 40)'  # min number of days after breakout before entering
+close_mults: 'c(1.02, 1.04, 1.06, 1.08)'  # how much should price jump after breakout
+macd_mults: 'c(1.02, 1.04, 1.06, 1.08)'  # how much MACD should be above signal
+profit_mults: 'c(1.45)'  # how much profit to make before selling
+atr_days: 'c(15, 30, 45, 60)'
+atr_shifts: 'c(15, 30, 45)'
+atr_maximums: 'c(0.3, 0.4, 0.6, 0.8, 1, 9999)'
+
+random: TRUE  # if TRUE randomize search order
+runs: 5000  # in random mode, how many runs to execute
+cores: 14  # practically number of simulations to run

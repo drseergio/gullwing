@@ -1,0 +1,11 @@
+db_src:              # DB containing market data
+  host: "localhost"
+  name: "mcquotes"
+  user: "mc"
+  pass: "test"
+
+db_dst:              # DB for storing execution results
+  host: "localhost"
+  name: "mcgullwing"
+  user: "mc"
+  pass: "test"
